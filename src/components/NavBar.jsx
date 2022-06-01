@@ -13,6 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import Logo from '../images/libreria.jpg';
+import CartWidget from './CartWidget';
 
 const pages = ['Articulos', 'Promociones', 'Catálogo', 'Login', 'Contacto'];
 const settings = ['Mi Perfil', 'Mi Cuenta', 'Logout'];
@@ -96,7 +97,7 @@ const NavBar = () => {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
           <Typography
             variant="h5"
             noWrap
@@ -113,7 +114,7 @@ const NavBar = () => {
               textDecoration: 'none',
             }}
           >
-            LOGO
+          <img src={Logo} />
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
@@ -126,6 +127,10 @@ const NavBar = () => {
               </Button>
             ))}
           </Box>
+
+          <Box sx={{ flexGrow: 0 }}>
+						<CartWidget items={4} />
+					</Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
@@ -156,6 +161,7 @@ const NavBar = () => {
               ))}
             </Menu>
           </Box>
+
         </Toolbar>
       </Container>
     </AppBar>
