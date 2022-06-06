@@ -3,13 +3,10 @@ import { miArray } from '../hooks/arrays';
 
 function ItemListContainer({ greeting }) {
 	return (
-		<>
+		<div className='centerElement'>
 			<h1>{greeting}</h1>
-			{miArray.map((item, index) => {
-				const {} = item;
-				return <p>{item}</p>;
-			})}
-		</>
+
+		</div>
 	);
 }
 
