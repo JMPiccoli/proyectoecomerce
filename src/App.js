@@ -6,6 +6,7 @@ import Test from './components/Test';
 import CartWidget from './components/CartWidget';
 import ItemListContainer from './components/ItemListContainer';
 import ItemCount from './components/ItemCount';
+import ItemDetailContainer from './components/ItemDetailContainer';
 
 function App() {
 
@@ -17,7 +18,8 @@ function App() {
   return (
     <>
       <NavBar />
-      <ItemListContainer greeting={'Bienvenido a mi Sitio de Compras Online'} />
+      <ItemDetailContainer />
+      {/* <ItemListContainer greeting={'Bienvenido a mi Sitio de Compras Online'} /> */}
       <ItemCount initial={1} max={10} onAdd={onAdd} />
       {/* <Test { 0 }/> */}
     </> 
