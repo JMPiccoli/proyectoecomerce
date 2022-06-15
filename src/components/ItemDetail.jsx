@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
+import ItemDetailContainer from './ItemDetailContainer';
 
-
-function ItemDetail({producto}) {
-    const { id, nombre, descripcion, precio, stock, imagen} = producto
+const ItemDetail = ({productos}) => {
+    console.log(productos)
+    const { id, nombre, descripcion, precio, stock, imagen, categoria} = productos
     return (
        <>
          <div className="container container-detail">
