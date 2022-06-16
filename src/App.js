@@ -20,7 +20,7 @@ function App() {
 
     
   }
-  'Articulos', 'Promociones', 'Catálogo', 'Login', 'Contacto'
+
 
   return (
     <>
@@ -30,13 +30,10 @@ function App() {
               <Route path="/" element={ <Home sumarCarrito={ sumarCarrito } /> } />
               <Route path="/articulos" />
               <Route path="/promociones" />
-              <Route path="/promociones" />
-              <Route path="/promociones" />
-              <Route path="/promociones" />
-
-              <Route path="/Contacto" />
+              <Route path="/catalogo" />
+              <Route path="/login" />
+              <Route path="/contacto" />
           </Routes>
-          <Footer />
     </BrowserRouter>
   </>
   );
