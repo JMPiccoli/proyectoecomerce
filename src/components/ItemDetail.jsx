@@ -1,9 +1,18 @@
 import React from 'react';
 import ItemDetailContainer from './ItemDetailContainer';
+import {Link} from 'react-router-dom';
+import ItemCount from './ItemCount';
+import { useState } from 'react';
 
 const ItemDetail = ({productos}) => {
-    console.log(productos)
     const { id, nombre, descripcion, precio, stock, imagen, categoria} = productos
+    const [cantidad, setCantidad] = useState();
+
+    function onAdd(contador){
+      alert(`Se han agregado: ${contador} productos`);
+      setCantidad(contador);
+    }
+
     return (
        <>
          <div className="container container-detail">
@@ -28,7 +37,7 @@ const ItemDetail = ({productos}) => {
              </div>
            </div>
          </div>
-
+         {cantidad > 0 ? <Link to={'/cart'} className="btn-fin">Finalizar compra</Link>:<ItemCount maximo={stock} inicial={1} onAdd={onAdd}/>} 
      </>
     );
   };

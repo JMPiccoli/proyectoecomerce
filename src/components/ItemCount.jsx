@@ -13,7 +13,7 @@ const ItemCount = ({initial, max, onAdd}) => {
     }
 
     const restar = () => {
-        count > initial ? setCount(count - 1) : alert('No puedes quitar màs productos')
+        count > initial ? setCount(count - 1) : alert('No puedes quitar más productos')
     }
 
     const reset = () => {
