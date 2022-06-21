@@ -4,8 +4,8 @@ import {Link} from 'react-router-dom';
 import ItemCount from './ItemCount';
 import { useState } from 'react';
 
-const ItemDetail = ({productos}) => {
-    const { id, nombre, descripcion, precio, stock, imagen, categoria} = productos
+const ItemDetail = ({producto}) => {
+    const { id, nombre, descripcion, precio, stock, imagen, categoria} = producto
     const [cantidad, setCantidad] = useState();
 
     function onAdd(contador){
@@ -25,10 +25,11 @@ const ItemDetail = ({productos}) => {
                    </div>
                    <div className="col-md-8 col-sm-6 pt-5">
                      <div className="card-body">
-                       <h5 className="card-title card-title-detail">{nombre}</h5>
+                       <h5 className="card-title card-title-detail">{id} - {nombre}</h5>
                        <p className="card-text card-detail mt-3">{descripcion}</p>
                        <p className="card-text price-detail">PRECIO: ${precio}</p>
                        <p className="card-text stock-detail">Hay {stock} productos en stock</p>
+                       <p className="card-text stock-detail">Categoría: {categoria}</p>
                        <button type="button" className="btn card-btn-cart d-grid gap-2 col-3 mx-auto mt-5">Agregar al Carrito</button>
                      </div>
                    </div>
@@ -37,7 +38,7 @@ const ItemDetail = ({productos}) => {
              </div>
            </div>
          </div>
-         {cantidad > 0 ? <Link to={'/cart'} className="btn-fin">Finalizar compra</Link>:<ItemCount maximo={stock} inicial={1} onAdd={onAdd}/>} 
+         {cantidad > 0 ? <Link to={'/cart'} className="btn-fin">Finalizar compra</Link>:<ItemCount max={stock} initial={1} onAdd={onAdd}/>} 
      </>
     );
   };

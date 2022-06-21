@@ -20,8 +20,9 @@ const ItemCount = ({initial, max, onAdd}) => {
         setCount(initial)
     }
 
+    console.log('Valores ',count, initial, max )
     return (
-    <div className='centerElement'>
+    <div>
         <h2>{count}</h2>
         {/* <button class="button-12" role="button" onClick={sumar}>+</button>
         <button class="button-12" role="button" onClick={restar}>-</button> */}

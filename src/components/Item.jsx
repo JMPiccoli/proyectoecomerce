@@ -1,6 +1,7 @@
 import { LibraryAddOutlined } from '@mui/icons-material'
 import React from 'react'
 import { Card, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom';
 
 function Item({articulo}) {
     const { id, nombre, descripcion, precio, stock, imagen} = articulo
@@ -18,7 +19,7 @@ function Item({articulo}) {
                 <br />
                 Stock: {stock}
             </Card.Text>
-            <Button variant="primary">Detalle</Button>
+            <Link to = {'/item/'+ id} ><Button variant="primary">Detalle</Button></Link>
         </Card.Body>
     </Card>
   )
