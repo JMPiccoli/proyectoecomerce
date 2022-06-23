@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ItemDetailContainer from './ItemDetailContainer';
 import {Link} from 'react-router-dom';
 import ItemCount from './ItemCount';
 import { useState } from 'react';
+import { CartContext } from './CartContext';
 
-const ItemDetail = ({producto}) => {
+const ItemDetail = ({ producto }) => {
     const { id, nombre, descripcion, precio, stock, imagen, categoria} = producto
-    const [cantidad, setCantidad] = useState();
+    const [cantidad, setCantidad] = useState(1);
+
+    const {isInCart, addItem} = useContext(CartContext)
 
     function onAdd(contador){
       alert(`Se han agregado: ${contador} productos`);
       setCantidad(contador);
+      isInCart(producto.id);
+      addItem(producto, contador);
     }
 
     return (

@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 export default function Cart() {
-  return (
-    <>
-    <h1>Cart</h1>
-    </>
+
+    const {cart} = useContext(CartContext)
+    return (
+        <>
+            {/* {
+              cart.length > 0 ?  cart.map((element, index) => {
+                  return 
+              }) : <h2>TU CARRITO ESTÁ VACÍO</h2>
+            } */}
+          <h1>Cart</h1>
+        </>
   )
 }
