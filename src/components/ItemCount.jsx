@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import './itemCount.css';
 
-const ItemCount = ({initial, max, onAdd}) => {
+const ItemCount = ({cantidad, setCantidad, initial, max, onAdd}) => {
 
     const [count, setCount] = useState(initial)
 
@@ -22,12 +23,10 @@ const ItemCount = ({initial, max, onAdd}) => {
 
     console.log('Valores ',count, initial, max )
     return (
-    <div>
-        <h2>{count}</h2>
-        {/* <button class="button-12" role="button" onClick={sumar}>+</button>
-        <button class="button-12" role="button" onClick={restar}>-</button> */}
-        <button onClick={sumar}>+</button>
+    <div className="contador-style">
         <button onClick={restar}>-</button>
+         <h2>{count}</h2>
+        <button onClick={sumar}>+</button>
         <button onClick={reset}>Reset</button>
         <button onClick={() => onAdd(count)}>Agregar</button>
     </div>

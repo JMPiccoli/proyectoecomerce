@@ -1,4 +1,4 @@
-import { createContext } from 'react'
+import { createContext, useState } from 'react'
 
 export const CartContext = createContext();
 
@@ -41,17 +41,17 @@ const MyProvider  = ({children}) => {
 
     // Método Reduce - CardWidget - Devuelve la cantidad total del state cart
     const getItemQty = () => {
-        return cart.reduce((acc, x) => acc += x.contador, 0)
+        return setCart(cart.reduce((acc, x) => acc += x.contador, 0))
     }
 
     // Método Reduce - Cart - Devuelve el precio total del Cart
     const getItemCart = () => {
-      return cart.reduce((acc, x) => acc += x.contador * x.precio, 0)
+      return setCart(cart.reduce((acc, x) => acc += x.contador * x.precio, 0))
     }
 
 
 
-    return <Provider value={{cart, isInCart, addItem, emptyCart, deleteItem, getItemCart}}>{children}</Provider>
+    return <Provider value={{cart, isInCart, addItem, emptyCart, deleteItem, getItemQty, getItemCart}}>{children}</Provider>
 
 }
 

@@ -17,7 +17,7 @@ const ItemDetail = ({ producto }) => {
       isInCart(producto.id);
       addItem(producto, contador);
     }
-
+    console.log('Cantidad: ' + cantidad)
     return (
        <>
          <div className="container container-detail">
@@ -43,7 +43,8 @@ const ItemDetail = ({ producto }) => {
              </div>
            </div>
          </div>
-         {cantidad > 0 ? <Link to={'/cart'} className="btn-fin">Finalizar compra</Link>:<ItemCount max={stock} initial={1} onAdd={onAdd}/>} 
+
+         {cantidad > 1 ? <Link to={'/cart'} className="btn-fin">Finalizar compra</Link>:<ItemCount cantidad={cantidad} setCantidad={setCantidad} max={stock} initial={1} onAdd={onAdd}/>} 
      </>
     );
   };
