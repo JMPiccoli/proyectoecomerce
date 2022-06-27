@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './itemCount.css';
+import { CartContext } from './CartContext';
 
-const ItemCount = ({cantidad, setCantidad, initial, max, onAdd}) => {
+const ItemCount = ({cantidad, setCantidad,  max, initial, onAdd}) => {
 
     const [count, setCount] = useState(initial)
 

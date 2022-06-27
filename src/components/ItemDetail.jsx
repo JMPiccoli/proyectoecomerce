@@ -35,7 +35,7 @@ const ItemDetail = ({ producto }) => {
                        <p className="card-text price-detail">PRECIO: ${precio}</p>
                        <p className="card-text stock-detail">Hay {stock} productos en stock</p>
                        <p className="card-text stock-detail">Categoría: {categoria}</p>
-                       <button type="button" className="btn card-btn-cart d-grid gap-2 col-3 mx-auto mt-5">Agregar al Carrito</button>
+                       {/* <button type="button" className="btn card-btn-cart d-grid gap-2 col-3 mx-auto mt-5">Agregar al Carrito</button> */}
                      </div>
                    </div>
                  </div>

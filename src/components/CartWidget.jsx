@@ -3,6 +3,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { CartContext } from './CartContext';
 import { Badge } from '@mui/material';
 
+
 function CartWidget({ items }) {
 	const {getItemQty} = useContext(CartContext)
 
