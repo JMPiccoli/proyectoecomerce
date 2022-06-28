@@ -3,11 +3,12 @@ import { CartContext } from './CartContext';
 
 export default function Cart() {
 
-    const {cart} = useContext(CartContext)
+    const {cart, getItemCart} = useContext(CartContext)
     console.log('Carrito: ', cart.length)
     return (
         <>
-
+            <h1 style={{ textAlign: 'center'}}>Tu Carrito de Compras</h1>
+            <h2 style={{ textAlign: 'center'}}>Importe Total de tu pedido: </h2>
             {
               cart.length > 0 ?  cart.map((element, index) => {
                     return <div>
@@ -42,7 +43,7 @@ export default function Cart() {
        
                       </div>
 
-              }) : <h2>TU CARRITO ESTÁ VACÍO</h2>
+              }) : <h2 style={{ textAlign: 'center'}}>ESTÁ VACÍO</h2>
             }
             <div className="card">
               <div className="card-body">
