@@ -129,7 +129,7 @@ const NavBar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-						<CartWidget />
+						<CartWidget items={0} />
 					</Box>
 
           <Box sx={{ flexGrow: 0 }}>
