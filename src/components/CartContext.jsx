@@ -41,12 +41,14 @@ const MyProvider  = ({children}) => {
 
     // Método Reduce - CardWidget - Devuelve la cantidad total del state cart
     const getItemQty = () => {
-        return setCart(cart.reduce((acc, x) => acc += x.contador, 0))
+        // return setCart(cart.reduce((acc, x) => acc += x.contador, 0))
+        return cart.reduce((acc, x) => acc += x.contador , 0)
     }
 
     // Método Reduce - Cart - Devuelve el precio total del Cart
     const getItemCart = () => {
-      return setCart(cart.reduce((acc, x) => acc += x.contador * x.precio, 0))
+    //   return setCart(cart.reduce((acc, x) => acc += x.contador * x.precio, 0))
+      return cart.reduce((acc, x) => (acc += x.precio * x.contador) , 0)
     }
 
 

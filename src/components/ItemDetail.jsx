@@ -44,7 +44,13 @@ const ItemDetail = ({ producto }) => {
            </div>
          </div>
 
-         {cantidad > 1 ? <Link to={'/cart'} className="btn-fin">Finalizar compra</Link>:<ItemCount cantidad={cantidad} setCantidad={setCantidad} max={stock} initial={1} onAdd={onAdd}/>} 
+         {cantidad > 1 ? 
+            // <div>
+            //     <Link to={'/'}><button className="botonPrincipal">Seguir comprando</button></Link>
+            //     <Link to={'/cart'}><button className="botonPrincipal">Terminar mi compra</button></Link>
+            // </div>
+             <Link to={'/cart'} className="btn-fin">Finalizar compra</Link> :
+             <ItemCount cantidad={cantidad} setCantidad={setCantidad} max={stock} initial={1} onAdd={onAdd}/>} 
      </>
     );
   };

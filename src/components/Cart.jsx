@@ -1,14 +1,14 @@
 import React, { useContext } from 'react'
+import { Link } from 'react-router-dom';
 import { CartContext } from './CartContext';
+import './cart.css';
 
 export default function Cart() {
+    const {cart, emptyCart, getItemCart, deleteItem} = useContext(CartContext);
 
-    const {cart, getItemCart} = useContext(CartContext)
-    console.log('Carrito: ', cart.length)
     return (
         <>
             <h1 style={{ textAlign: 'center'}}>Tu Carrito de Compras</h1>
-            <h2 style={{ textAlign: 'center'}}>Importe Total de tu pedido: </h2>
             {
               cart.length > 0 ?  cart.map((element, index) => {
                     return <div>
@@ -35,7 +35,7 @@ export default function Cart() {
                                 <h5 className="mb-0">{element.precio}</h5>
                               </div>
                               <div className="col-md-1 col-lg-1 col-xl-1 text-end">
-                                <a href="#!" className="text-danger"><i className="fas fa-trash fa-lg" />Eliminar</a>
+                                <a href="#!" className="text-danger" onClick={() => deleteItem(element.id)}><i className="fas fa-trash fa-lg" />Eliminar</a>
                               </div>
                             </div>
                            </div>
@@ -45,11 +45,24 @@ export default function Cart() {
 
               }) : <h2 style={{ textAlign: 'center'}}>ESTÁ VACÍO</h2>
             }
-            <div className="card">
-              <div className="card-body">
-                <button type="button" className="btn btn-warning btn-block btn-lg">Ir a Pagar</button>
-              </div>
+
+            <div className="cart-footer">
+                {cart.length == 0?
+                    <Link to="/"><button className="botonPrincipal">Volver al inicio</button></Link>
+                :
+                    <>
+                        <h3>Total: ${getItemCart()}</h3>
+                        <Link to="/checkout"><button type="button" className="btn btn-warning btn-block btn-lg">Ir a Pagar</button></Link>
+                        <button type="button" className="btn btn-warning btn-block btn-lg" onClick={emptyCart}>Vaciar Carrito</button>
+                    </>
+                }
             </div>
+
+            {/* <div className="card">
+              <div className="card-body">
+                <button type="button" className="btn btn-warning btn-block btn-lg" onClick={emptyCart}>Vaciar Carrito</button>
+              </div>
+            </div> */}
           
         </>
   )
