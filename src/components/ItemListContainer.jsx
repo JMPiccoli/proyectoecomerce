@@ -1,37 +1,46 @@
 import React, { useEffect, useState} from 'react';
 import ItemList from './ItemList';
-import productos from '../hooks/products.js'
 import { useParams } from "react-router-dom";
-import { miArray } from '../hooks/arrays';
+import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
 
 export default function ItemListContainer() {
 	const {id} = useParams();	
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(false);
-	const [result, setResult] = useState([]);
+	const [productos, setProductos] = useState([]);
 
 	useEffect(() => {
-		const muestraArticulos = new Promise((res,) => {
-			setTimeout(() => {
-			  (!id) ? res (productos) : res (productos.filter(item => item.categoria === id));
-		  console.log(productos)
-			  
-			}, 2000);
-		  });		
+		const db = getFirestore();
+		const productosCollection = collection(db, 'productos');
 
-		muestraArticulos
-			.then((result) => {
-				setResult(result);
-			})
-
-			.catch((error) => {
-				setError(true);
-				console.log(error);
-			})
-
-			.finally(() => {
-				setLoading(false);
-			})
+		if (id) {
+			const q = query(productosCollection, where('categoria', '==', id));
+	  
+			getDocs(q)
+			.then((snapshot) => {
+			  setProductos(
+				snapshot.docs.map((doc) => ({...doc.data(), id: doc.id}))
+			  );
+			  setLoading(false);
+			}
+			).catch(error => {
+			  setError(error);
+			  setLoading(false);
+			});
+		  } else {
+			getDocs(productosCollection)
+			.then((snapshot) => {
+			  setProductos(
+				snapshot.docs.map((doc) => ({...doc.data(), id: doc.id}))
+			  );
+			setLoading(false);
+		  }
+		  ).catch(error => {
+			setError(error);
+			setLoading(false);
+		  });
+		}
+	  
 	}, [id]);
 
 	return (
@@ -39,7 +48,7 @@ export default function ItemListContainer() {
 			{/* <h1>{greeting}</h1> */}
 			<div>{loading && "Loading..."}</div>
 			<div>{error && "Se produjo un error, por favor vuelva a intentarlo."}</div>
-			<ItemList articulos={result}/>
+			<ItemList articulos={productos}/>
 		</div>
 	);
 }

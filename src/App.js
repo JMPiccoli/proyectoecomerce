@@ -11,9 +11,18 @@ import ItemDetailContainer from './components/ItemDetailContainer';
 import { Routes, Route, BrowserRouter} from 'react-router-dom' ;
 import Cart from './components/Cart';
 import MyProvider from './components/CartContext';
+import { initializeApp } from "firebase/app";
 
 
 function App() {
+  initializeApp({
+    apiKey: "AIzaSyByjNBUVJmYsvY6HtmHJyrL4BMuRK0a0Ns",
+    authDomain: "libreriaonline-b6924.firebaseapp.com",
+    projectId: "libreriaonline-b6924",
+    storageBucket: "libreriaonline-b6924.appspot.com",
+    messagingSenderId: "794749645071",
+    appId: "1:794749645071:web:2f8b004cdd1c6c29544e7a"
+  });
 
   return (
     <>
