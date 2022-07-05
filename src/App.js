@@ -12,7 +12,7 @@ import { Routes, Route, BrowserRouter} from 'react-router-dom' ;
 import Cart from './components/Cart';
 import MyProvider from './components/CartContext';
 import { initializeApp } from "firebase/app";
-
+import CheckOut from './components/CheckOut';
 
 function App() {
   initializeApp({
@@ -29,13 +29,14 @@ function App() {
       <BrowserRouter>
       <MyProvider>
           <NavBar />
-          <NavBar2 />
+          {/* <NavBar2 /> */}
           <Routes>
               <Route path="/" element={ <ItemListContainer /> } />
               <Route path="/home" element={ <ItemListContainer /> } />
               <Route path="/categoria/:id" element={ <ItemListContainer /> } />
               <Route path="/item/:id" element={ <ItemDetailContainer /> } />
               <Route path="/cart" element={ <Cart/> } />
+              <Route path="/checkout" element={ <CheckOut/> } />              
           </Routes>
       </MyProvider>
     </BrowserRouter>

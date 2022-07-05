@@ -9,7 +9,7 @@ export default function Cart() {
     return (
         <>
             <h1 style={{ textAlign: 'center'}}>Tu Carrito de Compras</h1>
-            {
+            { 
               cart.length > 0 ?  cart.map((element, index) => {
                     return <div>
                         <div className="card rounded-3 mb-4">

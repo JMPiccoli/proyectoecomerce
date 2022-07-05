@@ -14,9 +14,9 @@ const MyProvider  = ({children}) => {
     }
 
     // ItemDetail - Agrega el producto al Cart. Si existe, aumenta cantidad, sino lo agrega
-    const addItem = (item, contador) => {
+    const addItem = (item, contador, id) => {
         const newItem = {
-            ...item, contador
+            ...item, contador, id
         }
 
         if (isInCart(newItem.id)) {
