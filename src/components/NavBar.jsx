@@ -7,17 +7,13 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import Logo from '../images/libreria.jpg';
 import CartWidget from './CartWidget';
 import NavBar2 from './NavBar2';
 
-const pages = ['Articulos', 'Promociones', 'Catálogo', 'Login', 'Contacto'];
-const settings = ['Mi Perfil', 'Mi Cuenta', 'Logout'];
+const pages = [];
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -58,7 +54,7 @@ const NavBar = () => {
               textDecoration: 'none',
             }}
           >
-            <img src={Logo} />
+            <img src={Logo} alt="Logo" />
             
           </Typography>
 
@@ -116,7 +112,7 @@ const NavBar = () => {
               textDecoration: 'none',
             }}
           >
-          <img src={Logo} />
+          <img src={Logo} alt="Logo"/>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (

@@ -16,7 +16,7 @@ export default function Cart() {
                           <div className="card-body p-4">
                             <div className="row d-flex justify-content-between align-items-center">
                               <div className="col-md-2 col-lg-2 col-xl-2">
-                                <img src={element.imagen} className="img-fluid rounded-3" alt="Cotton T-shirt" />
+                                <img src={element.imagen} className="img-fluid rounded-2" alt="Cotton T-shirt" />
                               </div>
                               <div className="col-md-3 col-lg-3 col-xl-3">
                                 <p className="lead fw-normal mb-2">{element.nombre}</p>
@@ -47,22 +47,16 @@ export default function Cart() {
             }
 
             <div className="cart-footer">
-                {cart.length == 0?
+                {cart.length === 0?
                     <Link to="/"><button className="botonPrincipal">Volver al inicio</button></Link>
                 :
                     <>
                         <h3>Total: ${getItemCart()}</h3>
-                        <Link to="/checkout"><button type="button" className="btn btn-warning btn-block btn-lg">Ir a Pagar</button></Link>
-                        <button type="button" className="btn btn-warning btn-block btn-lg" onClick={emptyCart}>Vaciar Carrito</button>
+                        <Link to="/checkout"><button type="button" className="botonCarrito">Ir a Pagar</button></Link>
+                        <button type="button" className="botonCarrito" onClick={emptyCart}>Vaciar Carrito</button>
                     </>
                 }
             </div>
-
-            {/* <div className="card">
-              <div className="card-body">
-                <button type="button" className="btn btn-warning btn-block btn-lg" onClick={emptyCart}>Vaciar Carrito</button>
-              </div>
-            </div> */}
           
         </>
   )

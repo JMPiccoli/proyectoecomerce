@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './itemCount.css';
-import { CartContext } from './CartContext';
+import swal from 'sweetalert';
+
 
 const ItemCount = ({cantidad, setCantidad,  max, initial, onAdd}) => {
 
@@ -10,25 +11,30 @@ const ItemCount = ({cantidad, setCantidad,  max, initial, onAdd}) => {
         if (count < max) {
             setCount(count + 1)
         }else {
-            alert('Llegaste al stock máximo del producto')
+            swal({
+                title: "Alerta!!!",
+                text: "Llegaste al stock máximo",
+                icon: "warning",
+                button: "Aceptar"
+            })
         }   
     }
 
     const restar = () => {
-        count > initial ? setCount(count - 1) : alert('No puedes quitar más productos')
+        count > initial ? setCount(count - 1) : 
+        swal({
+            title: "Alerta!!!",
+            text: "No puedes quitar más productos",
+            icon: "warning",
+            button: "Aceptar"
+        })
     }
 
-    const reset = () => {
-        setCount(initial)
-    }
-
-    console.log('Valores ',count, initial, max )
     return (
     <div className="contador-style">
         <button onClick={restar}>-</button>
          <h2>{count}</h2>
         <button onClick={sumar}>+</button>
-        <button onClick={reset}>Reset</button>
         <button onClick={() => onAdd(count)}>Agregar</button>
     </div>
   )

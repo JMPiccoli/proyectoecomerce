@@ -1,6 +1,9 @@
 .itemlist{
     display: flex;
     flex-wrap: wrap;
-    border: 3px solid green;
+    justify-content: space-around;
+    margin: 0 auto;
+    border: 3px solid blue;
     padding: 2%;
+    background-color: aquamarine;
 }

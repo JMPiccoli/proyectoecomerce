@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { CartContext } from './CartContext';
+import { Link } from 'react-router-dom';
 
 
 function CartWidget({ items }) {
@@ -8,8 +9,9 @@ function CartWidget({ items }) {
 
 	return (
 		<>
-			<ShoppingCartIcon />
+			<Link to="/cart"><ShoppingCartIcon />
 			<span>{getItemQty()}</span>
+			</Link>
 		</>
 	);
 }

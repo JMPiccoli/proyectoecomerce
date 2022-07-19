@@ -1,14 +1,13 @@
 import {useEffect, useState} from 'react';
 import ItemDetail from "./ItemDetail";
 import { useParams } from 'react-router-dom';
-import { darkScrollbar } from '@mui/material';
 import { doc, getDoc, getFirestore } from 'firebase/firestore';
 
 
 function ItemDetailContainer() {
     const {id} = useParams();
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(false);    
+	  const [loading, setLoading] = useState(true);
+	  const [error, setError] = useState(false);    
     const [producto, setProducto] = useState([]);
 
     console.log("Id: " + id);
@@ -31,7 +30,7 @@ function ItemDetailContainer() {
 
     return (
         <div>
-             {producto == undefined ? (
+             {producto === undefined ? (
                  <p>loading</p>
              ) : (
                     <ItemDetail producto={producto} id={id} />

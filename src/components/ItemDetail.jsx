@@ -1,21 +1,27 @@
 import React, { useContext } from 'react';
-import ItemDetailContainer from './ItemDetailContainer';
 import {Link} from 'react-router-dom';
 import ItemCount from './ItemCount';
 import { useState } from 'react';
 import { CartContext } from './CartContext';
+import swal from 'sweetalert';
+import './itemDetail.css';
 
-const ItemDetail = ({ producto }) => {
-    const { id, nombre, descripcion, precio, stock, imagen, categoria} = producto
+const ItemDetail = ({ producto, id }) => {
+    const { nombre, descripcion, precio, stock, imagen, categoria} = producto
     const [cantidad, setCantidad] = useState(1);
 
     const {isInCart, addItem} = useContext(CartContext)
 
     function onAdd(contador){
-      alert(`Se han agregado: ${contador} productos`);
+      swal({
+        title: "Correcto!!!",
+        text: `Se han agregado: ${contador} productos`,
+        icon: "success",
+        button: "Aceptar"
+      })
       setCantidad(contador);
-      isInCart(producto.id);
-      addItem(producto, contador);
+      isInCart(id);
+      addItem(producto, contador, id);
     }
     console.log('Cantidad: ' + cantidad)
     return (
@@ -30,7 +36,7 @@ const ItemDetail = ({ producto }) => {
                    </div>
                    <div className="col-md-8 col-sm-6 pt-5">
                      <div className="card-body">
-                       <h5 className="card-title card-title-detail">{id} - {nombre}</h5>
+                       <h5 className="card-title card-title-detail">{nombre}</h5>
                        <p className="card-text card-detail mt-3">{descripcion}</p>
                        <p className="card-text price-detail">PRECIO: ${precio}</p>
                        <p className="card-text stock-detail">Hay {stock} productos en stock</p>
@@ -45,12 +51,11 @@ const ItemDetail = ({ producto }) => {
          </div>
 
          {cantidad > 1 ? 
-            // <div>
-            //     <Link to={'/'}><button className="botonPrincipal">Seguir comprando</button></Link>
-            //     <Link to={'/cart'}><button className="botonPrincipal">Terminar mi compra</button></Link>
-            // </div>
-             <Link to={'/cart'} className="btn-fin">Finalizar compra</Link> :
-             <ItemCount cantidad={cantidad} setCantidad={setCantidad} max={stock} initial={1} onAdd={onAdd}/>} 
+            <>
+              <Link to={'/'}><button className="btn-fin">Seguir comprando</button></Link>
+              <Link to={'/cart'}><button className="btn-fin">Finalizar compra</button></Link> 
+            </> :
+            <ItemCount cantidad={cantidad} setCantidad={setCantidad} max={stock} initial={1} onAdd={onAdd}/>} 
      </>
     );
   };

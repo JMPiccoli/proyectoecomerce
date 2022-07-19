@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { CartContext } from './CartContext';
 import { addDoc, collection, getFirestore } from 'firebase/firestore'
 import './checkout.css'
-import { textAlign } from '@mui/system';
+
 
 export default function Checkout() {
     const [name, setName] = useState('')
@@ -15,8 +15,6 @@ export default function Checkout() {
 
     const db = getFirestore();
     const orderCollection = collection (db, 'pedidos');
-    
-
 
     const { cart, getItemCart, emptyCart } = useContext(CartContext);
     
@@ -25,9 +23,10 @@ export default function Checkout() {
         const order = {
             buyer: {name, email, phone},
             items: cart,
-            total: getItemCart()
+            total: getItemCart(),
+            fecha: new Date(),
         }
-        console.log(order)
+
         addDoc(orderCollection, order).then(({id}) => {
             setOrderId(id)
             setSentOrder(true)
@@ -47,10 +46,22 @@ export default function Checkout() {
             </div>
         )
     }
-
     return (
         <>
-        <div className="checkoutBody">
+          {sentOrder ? (
+            <div className="sentOrder">
+              <h1>¡Gracias por tu pedido!</h1>
+              <h2>Tu número de pedido es:</h2>
+              <p className="orderId">{orderId}</p>
+              <p>Nos pondremos en contacto para gestionar el pago y el envío!</p>
+              <Link to="/">
+                <button className="botonPrincipal" onClick={emptyCart}>
+                  Volver al inicio
+                </button>
+              </Link>
+            </div>
+          ) : (
+            <div className="checkoutBody">
             <h1>¡Gracias por tu pedido!</h1>
             <h2>Completá con tu información</h2>
             <p>Llená tu información en el formulario para completar la compra. Nos pondremos en contacto para gestionar el pago y el envío!</p>
@@ -59,15 +70,7 @@ export default function Checkout() {
             <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Tu teléfono..." />
             <button onClick={handleClick} className="botonPrincipal">Enviar</button>
         </div>
-        {sentOrder&&
-            <div className="sentOrder">
-                <h1>¡Gracias por tu pedido!</h1>
-                <h2>Tu número de pedido es:</h2>
-                <p className="orderId">{orderId}</p>
-                <p>Nos pondremos en contacto para gestionar el pago y el envío!</p>
-                <Link to="/"><button className="botonPrincipal" onClick={emptyCart}>Volver al inicio</button></Link>
-            </div>
-        }
+          )}
         </>
-    )
-}
+      );
+    }

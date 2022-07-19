@@ -2,3 +2,11 @@
     margin-top: 30px;
     text-align: center;
 }
+
+.botonCarrito {
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px;
+    border-color: blue;
+}

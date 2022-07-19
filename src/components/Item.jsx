@@ -1,10 +1,11 @@
-import { LibraryAddOutlined } from '@mui/icons-material'
 import React from 'react'
 import { Card, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
+import './item.css';
 
 function Item({articulo}) {
     const { id, nombre, descripcion, precio, stock, imagen} = articulo
+    console.log('Articulo: ',articulo)
   return (
     <Card style={{ width: '18rem' }}>
         <Card.Img variant="top" src={imagen} />
@@ -12,8 +13,8 @@ function Item({articulo}) {
             <Card.Title>{nombre}</Card.Title>
             <Card.Text>
                 Artículo: {id}
-                <br />
-                Descripción: {descripcion}
+                {/* <br />
+                Descripción: {descripcion} */}
                 <br />
                 Precio: {precio}
                 <br />

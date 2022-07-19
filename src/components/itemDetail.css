@@ -9,7 +9,9 @@
     display: flex;
     flex-wrap: wrap;
     border: 3px solid black;
-    padding: 2%;
+    padding: 10px 16px;
+    margin: 5px auto;
+    text-align: center;
 }
 
 .item-detail-contenedor {
@@ -19,3 +21,21 @@
     color: #4e0144;
 }
 
+/* .btn-fin {
+    background-color: #D4BBDD;
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    height: 40px;
+    line-height: 20px;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px;
+  } */
